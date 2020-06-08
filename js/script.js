@@ -46,18 +46,18 @@ startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-    getNewQuestions();
+    getNewQuestion();
 };
 
-getNewQuestions = () => {
-    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS){
+getNewQuestion = () => {
+    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         //got to the end of the page 
         return window.location.assign("/end.html");
     }
     questionCounter++;
     progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
     //Update the progress bar
-    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`;
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
@@ -91,7 +91,7 @@ choices.forEach(choice => {
 
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply);
-            getNewQuestions();
+            getNewQuestion();
         }, 1000);
     });
 });
