@@ -69,7 +69,7 @@ getNewQuestion = () => {
     });
 
     availableQuestions.splice(questionIndex, 1);
-    acceptinganswers = true;
+    acceptingAnswers = true;
 };
 
 choices.forEach(choice => {
