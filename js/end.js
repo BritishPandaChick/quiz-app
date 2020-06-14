@@ -1,9 +1,11 @@
 const username = document.getElementById("username");
 const saveScoreBtn = document.getElementById("saveScoreBtn");
-const mostRecentScore = localStore.getItem('mostRecentScore');
+const mostRecentScore = localStorage.getItem('mostRecentScore');
 const finalScore = document.getElementById("finalScore");
 
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+const MAX_HIGH_SCORES = 5;
 
 finalScore.innerText = mostRecentScore;
 
@@ -16,12 +18,15 @@ savedHighScore = e => {
     e.preventDefault();
 
     const score = {
-        score: mostRecentScore,
+        score: Math.floor(Math.random()*100),
         name: username.value
     };
     highScores.push(score);
+    highScores.sort((a,b) => b.score - a.score);
+    highScores.splice(5);
 
-    highScores.sort(a,b) => b.score - a.score;
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+    window.location.assign("/");
 
     console.log(highScore);
 };
