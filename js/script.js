@@ -81,7 +81,7 @@ choices.forEach(choice => {
     choice.addEventListener("click", e => {
         if (!acceptingAnswers) return;
 
-        accpetingAnswers = false;
+        acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
 
